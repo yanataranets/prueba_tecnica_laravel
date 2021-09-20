@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\CommentController;
 
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,10 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('storecomment/{id}', [PostController::class, 'storecomment']);
     Route::patch('updatecomment/{id}', [CommentController::class, 'update'])->name('updatecomment');
     Route::get('posts/{id}/sortTypeComment', [PostController::class, 'sortTypeComment'])->name('sortType');
+    Route::get('users', [UserController::class, 'index'])->name('indexusers');
+
+    Route::post('storeuser', [UserController::class, 'store'])->name('storeuser');
+    Route::patch('updateuser/{id}', [UserController::class, 'update'])->name('updateuser');
 
 });
 
