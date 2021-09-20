@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Post;
+namespace App\Http\Controllers\API;
 
 use App\Comment;
+use App\Http\Controllers\API\BaseController as BaseController;
 use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ use App\Repository\Post\PostInterface;
 use function is_null;
 use function redirect;
 
-class PostController extends Controller
+class PostController extends BaseController
 {
     //
     protected $post;

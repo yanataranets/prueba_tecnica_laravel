@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +15,17 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('login', [AuthController::class, 'signin']);
+Route::post('register', [AuthController::class, 'signup']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group( function () {
+    //Route::post('posts', [PostController::class, 'index']);
+    Route::get('posts', [PostController::class, 'index'])->name('index');
+    Route::post('store', [PostController::class, 'storeOrUpdate'])->name('store');
+    Route::get('view/{id}', [PostController::class, 'view'])->name('view');
+    Route::put('update/{id}', [PostController::class, 'storeOrUpdate'])->name('update');
+    Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete');
+    Route::get('delete/comment/{id}', [CommentController::class, 'delete'])->name('delete');
+
 });
+
