@@ -21,7 +21,8 @@ class PostRepository implements PostInterface{
             $post->title = $data['title'];
             $post->text = $data['text'];
             $post->image = $data['image'];
-            $post->comments = $data['comments'];
+//            $post->views = $data['views'];
+//            $post->comments = $data['comments'];
             return $post->save();
         }else{
             $post = Post::find($id);

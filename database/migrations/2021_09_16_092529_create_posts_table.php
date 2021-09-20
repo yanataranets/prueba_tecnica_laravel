@@ -17,9 +17,9 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('text');
-            $table->string('views');
-            $table->string('image');
-            $table->string('comments');
+            $table->string('views')->nullable(true);;
+            $table->string('image')->nullable(true);;
+            $table->string('comments')->nullable(true);
             $table->timestamps();
         });
     }

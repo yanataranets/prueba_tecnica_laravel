@@ -28,6 +28,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::put('update/{id}', [PostController::class, 'storeOrUpdate'])->name('update');
     Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete');
     Route::get('delete/comment/{id}', [CommentController::class, 'delete'])->name('delete');
+    Route::get('sortType', [PostController::class, 'sortType'])->name('sortType');
+
     Route::get('comments/{id}', [PostController::class, 'showcomment'])->name('comments');
 
 });
