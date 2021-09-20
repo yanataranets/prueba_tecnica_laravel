@@ -46,7 +46,7 @@ class PostRepository implements PostInterface{
 
     public function sortType()
     {
-        return Post::latest()->orderBy('id');
+        return Post::latest()->orderBy('title');
     }
     public function showcomment($id)
     {

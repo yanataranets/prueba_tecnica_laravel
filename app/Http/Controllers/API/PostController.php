@@ -60,4 +60,11 @@ class PostController extends BaseController
         $comments = Comment::query()->where('parent_id','=', $id)->get();
         return view('post.comments', ['comments'=>$comments]);
     }
+    public function sortType(){
+        $collection = collect(Post::all());
+        $sortType = $collection->sortBy(function($data, $key){
+           return $data['title'];
+        });
+        return($sortType);
+    }
 }

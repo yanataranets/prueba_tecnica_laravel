@@ -34,6 +34,7 @@
                 @empty
                 @endforelse
                 {{$posts->links()}}
+                <a href="{{url('sortType')}}">Sort by Title</a>
                 </tbody>
             </table>
 

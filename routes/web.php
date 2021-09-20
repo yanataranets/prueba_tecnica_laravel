@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Comment\CommentController;
+use App\Http\Controllers\API\CommentController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Post\PostController;
+use App\Http\Controllers\API\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +26,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('comments/{id}', [PostController::class, 'showcomment'])->name('comments');
+
+Route::get('sortType', [PostController::class, 'sortType'])->name('sortType');

@@ -11,6 +11,7 @@ interface PostInterface{
     public function view($id);
     public function delete($id);
     public function showcomment($id);
+    public function sortType();
 }
 
 
