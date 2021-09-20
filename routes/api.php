@@ -29,9 +29,9 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('delete/comment/{id}', [CommentController::class, 'delete'])->name('delete');
     Route::get('sortType', [PostController::class, 'sortType'])->name('sortType');
     Route::get('posts/{id}/comments', [PostController::class, 'showcomment'])->name('comments');
-
     Route::post('storecomment/{id}', [PostController::class, 'storecomment']);
-    Route::post('store', [CommentController::class, 'store'])->name('storecomment');
+    Route::patch('updatecomment/{id}', [CommentController::class, 'update'])->name('updatecomment');
+    Route::get('posts/{id}/sortTypeComment', [PostController::class, 'sortTypeComment'])->name('sortType');
 
 });
 

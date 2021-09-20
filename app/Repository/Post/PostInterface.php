@@ -14,6 +14,7 @@ interface PostInterface{
     public function showcomment($id);
     public function sortType();
     public function storecomment($id,$data);
+    public function sortTypeComment();
 }
 
 

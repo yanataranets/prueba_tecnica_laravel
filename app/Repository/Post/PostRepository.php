@@ -56,11 +56,17 @@ class PostRepository implements PostInterface{
         return view('post.comments',compact('comments'));
     }
 
-    public function storecomment($id, $data){
-        $test = Post::find($id);
+    public function storecomment($id, $data)
+    {
+        $post_id = Post::find($id);
         $comment = new Comment();
         $comment->comment = $data['comment'];
-        $comment->parent_id = $test->id;
+        $comment->parent_id = $post_id->id;
         return $comment->save();
-}
+    }
+    public function sortTypeComment()
+    {
+        return Comment::latest()->orderBy('created_at');
+    }
+
 }

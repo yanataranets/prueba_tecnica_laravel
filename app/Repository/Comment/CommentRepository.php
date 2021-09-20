@@ -26,4 +26,13 @@ class CommentRepository implements CommentInterface {
         return Comment::find($id)->get();
 
     }
+
+    public function update( $id, $data)
+    {
+        // TODO: Implement update() method.
+        $comment = Comment::find($id);
+        $comment->comment = $data['comment'];
+        return $comment->save();
+    }
+
 }

@@ -56,7 +56,6 @@ class PostController extends BaseController
     }
     public function showcomment($id)
     {
-
         $comments = Comment::query()->where('parent_id','=', $id)->get();
         return view('post.comments', ['comments'=>$comments]);
     }
@@ -74,5 +73,11 @@ class PostController extends BaseController
             return redirect()->route('index')
                 ->with('message', 'Post has been inserted!');
         }
-
+    public function sortTypeComment($id){
+        $collection = collect(Comment::query()->where('parent_id','=', $id)->get());
+        $sortType= $collection->sortBy(function($data, $key){
+            return $data['id'];
+        });
+        return($sortType);
+    }
 }
