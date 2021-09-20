@@ -28,3 +28,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('comments/{id}', [PostController::class, 'showcomment'])->name('comments');
 
 Route::get('sortType', [PostController::class, 'sortType'])->name('sortType');
+Route::get('post/{id}/storecomment', [CommentController::class, 'storeOrUpdate'])->name('store');
+Route::get('store/{id}', [CommentController::class, 'store'])->name('storecomment');
+Route::get('test/{id}', [PostController::class, 'test']);

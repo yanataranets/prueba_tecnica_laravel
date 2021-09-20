@@ -67,4 +67,12 @@ class PostController extends BaseController
         });
         return($sortType);
     }
+    public function storecomment(Request $request, $id){
+        $data = $request->only(['comment']);
+//insert
+            $this->post->storecomment($id, $data);
+            return redirect()->route('index')
+                ->with('message', 'Post has been inserted!');
+        }
+
 }

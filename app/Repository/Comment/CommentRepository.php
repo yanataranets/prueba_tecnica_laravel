@@ -3,6 +3,7 @@
 namespace App\Repository\Comment;
 use App\Comment;
 use App\Post;
+use http\Env\Request;
 use function is;
 use function is_null;
 
@@ -19,4 +20,10 @@ class CommentRepository implements CommentInterface {
         return Comment::find($id)->delete();
     }
 
+    public function store($id)
+    {
+        // TODO: Implement store() method.
+        return Comment::find($id)->get();
+
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Repository\Post;
 
 use App\Post;
+use http\Env\Request;
 
 
 interface PostInterface{
@@ -12,6 +13,7 @@ interface PostInterface{
     public function delete($id);
     public function showcomment($id);
     public function sortType();
+    public function storecomment($id,$data);
 }
 
 

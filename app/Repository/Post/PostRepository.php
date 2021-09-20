@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repository\Post;
+use App\Comment;
 use App\Post;
 use function is;
 use function is_null;
@@ -54,4 +55,12 @@ class PostRepository implements PostInterface{
         $comments = Post::find($id)->comment;
         return view('post.comments',compact('comments'));
     }
+
+    public function storecomment($id, $data){
+        $test = Post::find($id);
+        $comment = new Comment();
+        $comment->comment = $data['comment'];
+        $comment->parent_id = $test->id;
+        return $comment->save();
+}
 }

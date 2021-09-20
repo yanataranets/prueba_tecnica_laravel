@@ -30,6 +30,11 @@ class CommentController extends BaseController
             ]);
         }
     }
+    public function store($id){
+        $post_id = Comment::find($id);
+        return $post_id;
+    }
+
     public function delete($id){
         $this->comment->delete($id);
         return redirect()->route('index')

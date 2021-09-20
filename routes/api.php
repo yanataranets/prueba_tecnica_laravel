@@ -21,16 +21,17 @@ Route::post('login', [AuthController::class, 'signin']);
 Route::post('register', [AuthController::class, 'signup']);
 
 Route::middleware('auth:sanctum')->group( function () {
-
     Route::get('posts', [PostController::class, 'index'])->name('index');
     Route::post('store', [PostController::class, 'storeOrUpdate'])->name('store');
     Route::get('view/{id}', [PostController::class, 'view'])->name('view');
     Route::put('update/{id}', [PostController::class, 'storeOrUpdate'])->name('update');
-    Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete');
+    Route::delete('delete/{id}', [PostController::class, 'delete'])->name('delete');
     Route::get('delete/comment/{id}', [CommentController::class, 'delete'])->name('delete');
     Route::get('sortType', [PostController::class, 'sortType'])->name('sortType');
+    Route::get('posts/{id}/comments', [PostController::class, 'showcomment'])->name('comments');
 
-    Route::get('comments/{id}', [PostController::class, 'showcomment'])->name('comments');
+    Route::post('storecomment/{id}', [PostController::class, 'storecomment']);
+    Route::post('store', [CommentController::class, 'store'])->name('storecomment');
 
 });
 
