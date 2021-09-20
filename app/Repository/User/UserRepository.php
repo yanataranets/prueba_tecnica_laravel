@@ -24,7 +24,7 @@ class UserRepository implements UserInterface{
     }
     public function update($id, $data){
         $user = User::find($id);
-        //$user->name = $data['name'];
+        $user->name = $data['name'];
         $user->email = $data['email'];
         return $user->save();
     }
