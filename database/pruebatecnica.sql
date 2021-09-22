@@ -9,7 +9,7 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
+SET FOREIGN_KEY_CHECKS=0;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,95 +39,6 @@ CREATE TABLE `comments` (
 -- Volcado de datos para la tabla `comments`
 --
 
-INSERT INTO `comments` (`id`, `user_id`, `parent_id`, `comment`, `created_at`, `updated_at`) VALUES
-(5, NULL, 1, '12312eeew', '2021-09-20 12:32:42', '2021-09-20 12:32:42'),
-(6, NULL, 1, '12312eeew3', '2021-09-20 12:33:42', '2021-09-20 12:33:42'),
-(7, NULL, 1, 'test', '2021-09-20 14:43:31', '2021-09-20 14:43:31'),
-(8, NULL, 1, 'test', '2021-09-20 14:43:59', '2021-09-20 14:43:59'),
-(9, NULL, 1, 'test', '2021-09-20 14:44:00', '2021-09-20 14:44:00'),
-(10, NULL, 1, 'test', '2021-09-20 14:44:01', '2021-09-20 14:44:01'),
-(11, NULL, 1, 'test', '2021-09-20 14:44:02', '2021-09-20 14:44:02'),
-(12, NULL, 1, '12312eeew3dsdqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq', '2021-09-20 14:54:12', '2021-09-20 14:54:12'),
-(13, NULL, 1, 'testultimo', '2021-09-20 14:56:43', '2021-09-20 14:56:43'),
-(14, NULL, 1, 'testultimow', '2021-09-20 15:01:39', '2021-09-20 15:01:39'),
-(15, NULL, 2, 'updated   nn,n..n', '2021-09-22 06:27:20', '2021-09-22 06:27:20');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `failed_jobs`
---
-
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `migrations`
---
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2021_09_16_092529_create_posts_table', 1),
-(6, '2021_09_17_132625_create_comments_table', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `personal_access_tokens`
---
-
-CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `personal_access_tokens`
---
-
-INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(1, 'App\\User', 1, 'MyAuthApp', '19be547d9992bca87d55cbc17f016aad6213bcef6375995aec2b62a3216710e1', '[\"*\"]', '2021-09-22 07:11:49', '2021-09-20 12:14:43', '2021-09-22 07:11:49'),
-(2, 'App\\User', 4, 'MyAuthApp', 'f83ea6ead821b126b61f49d23356df688ec08138d2e6d4854fc614ddded1fcde', '[\"*\"]', NULL, '2021-09-22 05:22:52', '2021-09-22 05:22:52');
 
 -- --------------------------------------------------------
 
@@ -150,15 +61,6 @@ CREATE TABLE `posts` (
 -- Volcado de datos para la tabla `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `text`, `views`, `image`, `comments`, `created_at`, `updated_at`) VALUES
-(1, '12345678', '23478', NULL, '23478', NULL, '2021-09-20 12:28:17', '2021-09-20 12:28:17'),
-(2, '2', '2222', '22', '22', '22', NULL, NULL),
-(3, '2', '2222', '22', '22', '22', NULL, NULL),
-(4, '2', '2222', '22', '22', '22', NULL, NULL),
-(5, '2', '2222', '22', '22', '22', NULL, NULL),
-(6, '2', '2222', '22', '22', '22', NULL, NULL),
-(9, '12345678', '23478', NULL, '23478', NULL, '2021-09-22 06:23:52', '2021-09-22 06:23:52');
-
 -- --------------------------------------------------------
 
 --
@@ -179,11 +81,6 @@ CREATE TABLE `users` (
 --
 -- Volcado de datos para la tabla `users`
 --
-
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'anna', 'anna@gmail.com', NULL, '$2y$10$SxzQVSV/Y3ATmS364YdFLeLXG6tlsFBKCNB.6MsI9lkByecPFKCMa', NULL, '2021-09-20 12:14:43', '2021-09-20 12:14:43'),
-(4, 'anat', 'updated@gmail.ua', NULL, '$2y$10$.rUQaXRcKkksWnA4DiMDb.GKVldrFmFKhtTcGlQi0t56j8rGMVkWO', NULL, '2021-09-22 05:22:52', '2021-09-22 05:22:52'),
-(5, 'anatest', 'updated@gmail.uatest', NULL, '$2y$10$TLwzPEgjY4zfE8ycSK9YpugL8rIjlBwOexXH5SV9jpILSobpXi5he', NULL, '2021-09-22 06:28:29', '2021-09-22 06:28:29');
 
 --
 -- Índices para tablas volcadas
@@ -277,7 +174,7 @@ ALTER TABLE `users`
 -- Filtros para la tabla `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `posts` (`id`);
+  ADD CONSTRAINT `comments_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `posts` (`id`) ON CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
