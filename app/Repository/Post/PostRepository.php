@@ -19,8 +19,8 @@ class PostRepository implements PostInterface{
         $post->title = $data['title'];
         $post->text = $data['text'];
         $post->image = $data['image'];
-//            $post->views = $data['views'];
-//            $post->comments = $data['comments'];
+        $post->views = $data['views'];
+        $post->comments = $data['comments'];
         return $post->save();
     }
 
@@ -49,6 +49,7 @@ class PostRepository implements PostInterface{
     {
         return Post::latest()->orderBy('title');
     }
+
     public function showcomment($id)
     {
         $comments = Post::find($id)->comment;
@@ -63,6 +64,7 @@ class PostRepository implements PostInterface{
         $comment->parent_id = $post_id->id;
         return $comment->save();
     }
+
     public function sortTypeComment()
     {
         return Comment::latest()->orderBy('created_at');

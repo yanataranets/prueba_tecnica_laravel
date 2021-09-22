@@ -11,5 +11,6 @@ interface UserInterface{
     public function update($id, $data);
     public function sortType();
     public function view($id);
+    public function delete($id);
 
 }

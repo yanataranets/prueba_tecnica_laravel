@@ -33,18 +33,17 @@ class PostController extends BaseController
 
     public function update(Request $request, $id){
         $data = $request->only(['title', 'text', 'image']);
-
-            $this->post->update($id, $data);
-            return redirect()->route('index')
+        $this->post->update($id, $data);
+        return redirect()->route('index')
                 ->with('message', 'Post has been updated!');
-}
+    }
 
-public function store(Request $request){
-    $data = $request->only(['title', 'text', 'image']);
-    $this->post->store($data);
+    public function store(Request $request){
+        $data = $request->only(['title', 'text', 'image']);
+        $this->post->store($data);
     return redirect()->route('index')
         ->with('message', 'Post has been inserted!');
-}
+    }
 
     public function view($id){
         if(View::exists('post.edit')){
@@ -57,11 +56,13 @@ public function store(Request $request){
         return redirect()->route('index')
             ->with('message', 'Post has been deleted!');
     }
+
     public function showcomment($id)
     {
         $comments = Comment::query()->where('parent_id','=', $id)->get();
         return view('post.comments', ['comments'=>$comments]);
     }
+
     public function sortType(){
         $collection = collect(Post::all());
         $sortType = $collection->sortBy(function($data, $key){
@@ -69,13 +70,13 @@ public function store(Request $request){
         });
         return($sortType);
     }
+
     public function storecomment(Request $request, $id){
         $data = $request->only(['comment']);
-//insert
-            $this->post->storecomment($id, $data);
-            return redirect()->route('index')
+        $this->post->storecomment($id, $data);
+        return redirect()->route('index')
                 ->with('message', 'Post has been inserted!');
-        }
+    }
     public function sortTypeComment($id){
         $collection = collect(Comment::query()->where('parent_id','=', $id)->get());
         $sortType= $collection->sortBy(function($data, $key){

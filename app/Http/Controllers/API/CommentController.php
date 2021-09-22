@@ -22,6 +22,7 @@ class CommentController extends BaseController
     {
         $this->comment = $comment;
     }
+
     public function index()
     {
         if (View::exists('post.comments')) {
@@ -36,16 +37,17 @@ class CommentController extends BaseController
         return redirect()->route('index')
             ->with('message', 'Comment has been deleted!');
     }
+
     public function update(Request $request, $id){
         $data = $request->only(['comment']);
         $this->comment->update($id, $data);
         return redirect()->route('index');
     }
+
     public function view($id){
         if(View::exists('comment.edit')){
             return view('comment.edit',['comment'=>$this->comment->view($id)]);
         }
     }
-
 
 }

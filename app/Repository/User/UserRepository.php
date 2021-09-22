@@ -22,20 +22,30 @@ class UserRepository implements UserInterface{
         $user->password = bcrypt($data['password']);
         return $user->save();
     }
+
     public function update($id, $data){
         $user = User::find($id);
         $user->name = $data['name'];
         $user->email = $data['email'];
         return $user->save();
     }
+
     public function sortType()
     {
         // TODO: Implement sortType() method.
         return User::latest()->orderBy('name');
     }
+
     public function view($id)
     {
         // TODO: Implement view() method.
         return User::find($id);
     }
+
+    public function delete($id)
+    {
+        // TODO: Implement delete() method.
+        return User::find($id)->delete();
+    }
+
 }

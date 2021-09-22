@@ -14,13 +14,12 @@ class CommentRepository implements CommentInterface {
         // TODO: Implement getAllData() method.
         return Comment::latest()->paginate(5);
     }
+
     public function delete($id)
     {
         // TODO: Implement delete() method.
         return Comment::find($id)->delete();
     }
-
-
 
     public function update( $id, $data)
     {
@@ -29,6 +28,7 @@ class CommentRepository implements CommentInterface {
         $comment->comment = $data['comment'];
         return $comment->save();
     }
+
     public function view($id)
     {
         // TODO: Implement view() method.

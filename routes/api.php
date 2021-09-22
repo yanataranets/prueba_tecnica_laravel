@@ -22,11 +22,6 @@ Route::post('login', [AuthController::class, 'signin']);
 Route::post('register', [AuthController::class, 'signup']);
 
 Route::middleware('auth:sanctum')->group( function () {
-    Route::delete('delete/{id}', [PostController::class, 'delete'])->name('delete');
-    Route::get('delete/comment/{id}', [CommentController::class, 'delete'])->name('delete');
-
-
-
 
     Route::get('users', [UserController::class, 'index'])->name('indexusers');
     Route::get('posts', [PostController::class, 'index'])->name('index');
@@ -48,7 +43,9 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::patch('user/{id}/update', [UserController::class, 'update'])->name('updateuser');
     Route::patch('comment/{id}/update', [CommentController::class, 'update'])->name('updatecomment');
 
-
+    Route::delete('posts/{id}/delete', [PostController::class, 'delete'])->name('delete');
+    Route::delete('posts/comment/{id}/delete', [CommentController::class, 'delete'])->name('delete');
+    Route::delete('user/{id}/delete', [UserController::class, 'delete'])->name('delete user');
 
 });
 
