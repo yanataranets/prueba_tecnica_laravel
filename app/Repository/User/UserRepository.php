@@ -28,4 +28,14 @@ class UserRepository implements UserInterface{
         $user->email = $data['email'];
         return $user->save();
     }
+    public function sortType()
+    {
+        // TODO: Implement sortType() method.
+        return User::latest()->orderBy('name');
+    }
+    public function view($id)
+    {
+        // TODO: Implement view() method.
+        return User::find($id);
+    }
 }

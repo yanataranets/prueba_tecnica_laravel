@@ -22,21 +22,33 @@ Route::post('login', [AuthController::class, 'signin']);
 Route::post('register', [AuthController::class, 'signup']);
 
 Route::middleware('auth:sanctum')->group( function () {
-    Route::get('posts', [PostController::class, 'index'])->name('index');
-    Route::post('store', [PostController::class, 'storeOrUpdate'])->name('store');
-    Route::get('view/{id}', [PostController::class, 'view'])->name('view');
-    Route::put('update/{id}', [PostController::class, 'storeOrUpdate'])->name('update');
     Route::delete('delete/{id}', [PostController::class, 'delete'])->name('delete');
     Route::get('delete/comment/{id}', [CommentController::class, 'delete'])->name('delete');
-    Route::get('sortType', [PostController::class, 'sortType'])->name('sortType');
-    Route::get('posts/{id}/comments', [PostController::class, 'showcomment'])->name('comments');
-    Route::post('storecomment/{id}', [PostController::class, 'storecomment']);
-    Route::patch('updatecomment/{id}', [CommentController::class, 'update'])->name('updatecomment');
-    Route::get('posts/{id}/sortTypeComment', [PostController::class, 'sortTypeComment'])->name('sortType');
-    Route::get('users', [UserController::class, 'index'])->name('indexusers');
 
-    Route::post('storeuser', [UserController::class, 'store'])->name('storeuser');
-    Route::patch('updateuser/{id}', [UserController::class, 'update'])->name('updateuser');
+
+
+
+    Route::get('users', [UserController::class, 'index'])->name('indexusers');
+    Route::get('posts', [PostController::class, 'index'])->name('index');
+    Route::get('posts/{id}/comments', [PostController::class, 'showcomment'])->name('comments');
+
+    Route::get('posts/sort', [PostController::class, 'sortType'])->name('sortType');
+    Route::get('posts/{id}/comments/sort', [PostController::class, 'sortTypeComment'])->name('sortType');
+    Route::get('users/sort', [UserController::class, 'sortType'])->name('userSort');
+
+    Route::get('posts/{id}', [PostController::class, 'view'])->name('view');
+    Route::get('posts/comment/{id}', [CommentController::class, 'view']);
+    Route::get('user/{id}', [UserController::class, 'view']);
+
+    Route::post('posts/store', [PostController::class, 'store'])->name('store');
+    Route::post('posts/{id}/comment/store', [PostController::class, 'storecomment']);
+    Route::post('user/store', [UserController::class, 'store'])->name('storeuser');
+
+    Route::patch('posts/{id}/update', [PostController::class, 'update'])->name('update');
+    Route::patch('user/{id}/update', [UserController::class, 'update'])->name('updateuser');
+    Route::patch('comment/{id}/update', [CommentController::class, 'update'])->name('updatecomment');
+
+
 
 });
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Repository\User\UserInterface;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class UserController extends BaseController{
 
@@ -29,6 +30,18 @@ class UserController extends BaseController{
         $data = $request->only([ 'email']);
         $this->user->update($id, $data);
         return redirect()->route('index');
+    }
+    public function sortType(){
+        $collection = collect(User::all());
+        $sortType = $collection->sortBy(function ($data, $key){
+            return $data['title'];
+        });
+        return ($sortType);
+    }
+    public function view($id){
+        if(View::exists('user.edit')){
+            return view('user.edit', ['user'=>$this->user->view($id)]);
+        }
     }
 
 }

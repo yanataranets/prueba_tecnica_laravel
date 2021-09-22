@@ -31,18 +31,21 @@ class PostController extends BaseController
         }
     }
 
-    public function storeOrUpdate(Request $request, $id = null){
+    public function update(Request $request, $id){
         $data = $request->only(['title', 'text', 'image']);
-        if(!is_null($id)){ //update
-            $this->post->storeOrUpdate($id, $data);
+
+            $this->post->update($id, $data);
             return redirect()->route('index')
                 ->with('message', 'Post has been updated!');
-        }else{//insert
-            $this->post->storeOrUpdate($id = null, $data);
-            return redirect()->route('index')
-                ->with('message', 'Post has been inserted!');
-        }
-    }
+}
+
+public function store(Request $request){
+    $data = $request->only(['title', 'text', 'image']);
+    $this->post->store($data);
+    return redirect()->route('index')
+        ->with('message', 'Post has been inserted!');
+}
+
     public function view($id){
         if(View::exists('post.edit')){
             return view('post.edit',['post'=>$this->post->view($id)]);

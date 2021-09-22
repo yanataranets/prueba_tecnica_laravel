@@ -14,6 +14,10 @@ class Post extends Model
     /**
      * @var mixed
      */
+
+    /**
+     * @var mixed
+     */
     public function user(){
         return $this->belongsTo(User::class);
 }

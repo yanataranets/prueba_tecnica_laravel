@@ -41,7 +41,11 @@ class CommentController extends BaseController
         $this->comment->update($id, $data);
         return redirect()->route('index');
     }
-
+    public function view($id){
+        if(View::exists('comment.edit')){
+            return view('comment.edit',['comment'=>$this->comment->view($id)]);
+        }
+    }
 
 
 }

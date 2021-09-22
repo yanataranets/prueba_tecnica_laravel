@@ -14,24 +14,23 @@ class PostRepository implements PostInterface{
         return Post::latest()->paginate(5);
     }
 
-    public function storeOrUpdate($id = null, $data)
-    {
-        // TODO: Implement storeOrUpdate() method.
-        if(is_null($id)){
-            $post = new Post();
-            $post->title = $data['title'];
-            $post->text = $data['text'];
-            $post->image = $data['image'];
+    public function store($data){
+        $post = new Post();
+        $post->title = $data['title'];
+        $post->text = $data['text'];
+        $post->image = $data['image'];
 //            $post->views = $data['views'];
 //            $post->comments = $data['comments'];
-            return $post->save();
-        }else{
+        return $post->save();
+    }
+
+    public function update($id, $data)
+    {
             $post = Post::find($id);
             $post->title = $data['title'];
             $post->text = $data['text'];
             $post->image = $data['image'];
             return $post->save();
-        }
     }
 
     public function view($id)

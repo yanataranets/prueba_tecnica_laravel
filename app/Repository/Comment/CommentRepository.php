@@ -20,12 +20,7 @@ class CommentRepository implements CommentInterface {
         return Comment::find($id)->delete();
     }
 
-    public function store($id)
-    {
-        // TODO: Implement store() method.
-        return Comment::find($id)->get();
 
-    }
 
     public function update( $id, $data)
     {
@@ -33,6 +28,11 @@ class CommentRepository implements CommentInterface {
         $comment = Comment::find($id);
         $comment->comment = $data['comment'];
         return $comment->save();
+    }
+    public function view($id)
+    {
+        // TODO: Implement view() method.
+        return Comment::find($id);
     }
 
 }
