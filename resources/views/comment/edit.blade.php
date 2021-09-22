@@ -9,13 +9,9 @@
             <div class="form-group">
                 <input type="text" class="form-control" name="comment" value="{{$comment->comment}}">
             </div>
-
-
             <div class="form-group">
                 <button class="btn btn-block btn-success">Add New Data</button>
             </div>
-
-
         </form>
         <a class="btn btn-block btn-info">Back</a>
     </div>

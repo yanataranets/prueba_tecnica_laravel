@@ -15,19 +15,3 @@ use App\Http\Controllers\API\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('index');
-Route::post('store', [PostController::class, 'storeOrUpdate'])->name('store');
-Route::get('view/{id}', [PostController::class, 'view'])->name('view');
-Route::put('update/{id}', [PostController::class, 'storeOrUpdate'])->name('update');
-Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete');
-Route::get('delete/comment/{id}', [CommentController::class, 'delete'])->name('delete');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('comments/{id}', [PostController::class, 'showcomment'])->name('comments');
-
-Route::get('sortType', [PostController::class, 'sortType'])->name('sortType');
-Route::get('post/{id}/storecomment', [CommentController::class, 'storeOrUpdate'])->name('store');
-Route::get('store/{id}', [CommentController::class, 'store'])->name('storecomment');
-Route::get('test/{id}', [PostController::class, 'test']);

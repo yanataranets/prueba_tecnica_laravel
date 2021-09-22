@@ -1,9 +1,5 @@
-
-
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">Repository Design Pattern CRUD</h1>
-
             <hr>
             <table class="table table-bordered">
                 <thead>
@@ -33,7 +29,6 @@
                 @endforelse
                 {{$posts->links()}}
                 <a href="{{url('sortType')}}">Sort by Title</a>
-                <input name="post_id" value="{{$post->id}}" type="hidden">
                 </tbody>
             </table>
 

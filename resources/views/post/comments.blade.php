@@ -1,5 +1,4 @@
 @foreach($comments as $comment)
-
    <strong>{{$comment->parent_id}}</strong>
     <div class="display-comment">
         id: {{ $comment->id }}
